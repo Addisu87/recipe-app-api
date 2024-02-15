@@ -205,7 +205,7 @@ class PrivateRecipeAPITests(TestCase):
             'title': 'Thai Prawn Curry',
             'time_minutes': 30,
             'price': Decimal('2.50'),
-            'tags': [{'name', 'Thai'}, {'name': 'Dinner'}]
+            'tags': [{'name': 'Thai'}, {'name': 'Dinner'}]
         }
         res = self.client.post(RECIPES_URL, payload, format='json')
 
@@ -271,7 +271,7 @@ class PrivateRecipeAPITests(TestCase):
 
         self.assertEqual(res.status_code, status.HTTP_200_OK)
         self.assertIn(tag_lunch, recipe.tags.all())
-        self.assertNotIn(tag_breakfast, recipe.tag.all())
+        self.assertNotIn(tag_breakfast, recipe.tags.all())
 
     def test_clear_recipe_tags(self):
         """Test clearing a recipes tags."""
